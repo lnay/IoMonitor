@@ -1,5 +1,4 @@
 #!/bin/env io
-"hello world" println
 
 FileSys := Object clone
 FileSys getDirs := method(
@@ -33,11 +32,9 @@ ServiceManager load := method(
 
 ServiceManager load
 
-"Getting dirs from services" println
-
 ServiceManager list := method(
   self services foreach(i, service,
-    "#{i}: #{service directory}" interpolate println
+    "#{i}:    #{service directory}" interpolate println
   )
 )
 

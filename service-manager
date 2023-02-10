@@ -1,0 +1,2 @@
+#!/bin/sh
+cat temp - | script --append --return --flush --quiet -c "io" /dev/null | sed -e '/^Io> / {n;d;}'
