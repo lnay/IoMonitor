@@ -1,11 +1,9 @@
-#!/bin/env io
+#!/usr/bin/env io
 
 FileSys := Object clone
 FileSys getDirs := method(
   System runCommand("echo */") stdout split
 )
-
-FileSys getDirs foreach(dir, dir println)
 
 Service := Object clone
 
@@ -23,6 +21,7 @@ ServiceManager := Object clone
 ServiceManager services := List clone
 
 ServiceManager load := method(
+  self services empty
   FileSys getDirs foreach(dir,
     service := Service clone
     service directory := dir exSlice(0,-1)
@@ -38,4 +37,4 @@ ServiceManager list := method(
   )
 )
 
-ServiceManager list
+File standardInput foreachLine(line, ServiceManager doString(line) )
